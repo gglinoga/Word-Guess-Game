@@ -1,0 +1,15 @@
+.jumbotron {
+    background-image: url(../images/got.jpg)
+}
+
+body {
+    background-color: black;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.card-body{
+    text-align: center;
+}
