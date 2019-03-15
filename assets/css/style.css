@@ -1,15 +1,22 @@
 .jumbotron {
-    background-image: url(../images/got.jpg)
+    background-image: url(../images/got.jpg);
 }
 
 body {
-    background-color: black;
+    background-image: url(../images/map.png);
+    overflow: hidden;
+    height: 800px;
 }
 
 .card-title{
     text-align: center;
+    background-color: goldenrod;
+    font-family: cinzel, serif;
 }
 
 .card-body{
     text-align: center;
+    background-color: #691616;
+    color: white;
+    font-family: cinzel, serif;
 }
