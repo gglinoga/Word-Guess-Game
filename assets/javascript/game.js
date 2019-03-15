@@ -1,6 +1,6 @@
 var got = {
     //Variables -------------------------
-    words: ["stark", "baratheon", "daenarys targaryen", "lannister", "tyrell", "joffrey"],
+    words: ["tyrion", "drogo", "varys", "rhaegar", "north", "snow", "stark", "baratheon", "daenarys targaryen", "lannister", "tyrell", "joffrey"],
     chosenWord: "",
     underline: [],
     wordletter: [],
@@ -52,7 +52,7 @@ var got = {
                 if (this.chosenWord[i] == letter) {
                     this.underline[i] = letter;
                     document.getElementById("guessWord").innerHTML = this.underline.join(" ");
-                    console.log("1")
+                    // console.log("1")
                 }
             }
         }
@@ -65,32 +65,39 @@ var got = {
     },
 
     roundover: function () {
-        console.log("2")
-    document.getElementById("guessesLeft").innerHTML = this.guessesleft;
-    document.getElementById("guessWord").innerHTML = this.underline.join(" ");
-    document.getElementById("lettersGuessed").innerHTML = this.wrongletter.join(" ");
-console.log("2.5");
-        if (this.wordletter.toString() === this.underline.toString()) {
+        // console.log("2")
+        document.getElementById("guessesLeft").innerHTML = this.guessesleft;
+        document.getElementById("guessWord").innerHTML = this.underline.join(" ");
+        document.getElementById("lettersGuessed").innerHTML = this.wrongletter.join(" ");
+        // console.log("2.5");
+        if (this.wordletter.toString() === this.underline.toString() && this.chosenWord !== "") {
             this.wins++;
-            console.log("3")
-            alert("You win!")
+            // console.log("3")
+            alert("You win!  The answer was " + this.chosenWord)
             document.getElementById("wins").innerHTML = this.wins;
-            console.log("4")
+            // console.log("4")
             got.startup();
         }
         else if (this.guessesleft === 0) {
             this.losses++;
-            alert("You lose!")
+            alert("You lose!  The answer was " + this.chosenWord)
             document.getElementById("losses").innerHTML = this.losses;
             got.startup();
         }
     }
 }
 //-----------------start--------------
-got.startup()
 
-document.onkeyup = function (e) {
-    var letter = e.key;
-    got.verify(letter);
-    got.roundover();
+
+document.getElementById("guessWord").textContent = "Press any key to get started"
+
+document.onkeyup = function () {
+    got.startup();
+    document.onkeyup = function (e) {
+        var letter = e.key;
+        got.verify(letter);
+        got.roundover();
+    }
+
+
 }
