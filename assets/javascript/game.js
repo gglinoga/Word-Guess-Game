@@ -1,6 +1,6 @@
 var got = {
     //Variables -------------------------
-    words: ["stark", "baratheon", "daenarys", "lannister", "tyrell", "joffrey"],
+    words: ["stark", "baratheon", "daenarys targaryen", "lannister", "tyrell", "joffrey"],
     chosenWord: "",
     underline: [],
     wordletter: [],
@@ -52,6 +52,7 @@ var got = {
                 if (this.chosenWord[i] == letter) {
                     this.underline[i] = letter;
                     document.getElementById("guessWord").innerHTML = this.underline.join(" ");
+                    console.log("1")
                 }
             }
         }
@@ -64,11 +65,17 @@ var got = {
     },
 
     roundover: function () {
-
+        console.log("2")
+    document.getElementById("guessesLeft").innerHTML = this.guessesleft;
+    document.getElementById("guessWord").innerHTML = this.underline.join(" ");
+    document.getElementById("lettersGuessed").innerHTML = this.wrongletter.join(" ");
+console.log("2.5");
         if (this.wordletter.toString() === this.underline.toString()) {
             this.wins++;
+            console.log("3")
             alert("You win!")
             document.getElementById("wins").innerHTML = this.wins;
+            console.log("4")
             got.startup();
         }
         else if (this.guessesleft === 0) {
