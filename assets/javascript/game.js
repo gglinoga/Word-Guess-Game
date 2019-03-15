@@ -1,5 +1,4 @@
 var got = {
-    //Variables -------------------------
     words: ["tyrion", "drogo", "varys", "rhaegar", "north", "snow", "stark", "baratheon", "daenarys targaryen", "lannister", "tyrell", "joffrey"],
     chosenWord: "",
     underline: [],
@@ -13,8 +12,9 @@ var got = {
     guessesleft: 7,
     letter: "",
 
-    //Startup conditions -----------------------
     startup: function () {
+        let audio = new Audio('assets/music/got.mp3');
+        audio.play()
         this.chosenWord = this.words[Math.floor(Math.random() * this.words.length)];
         this.wordletter = this.chosenWord.split("");
         this.blanks = this.wordletter.length;
@@ -37,7 +37,6 @@ var got = {
         console.log(this.chosenWord)
     },
 
-    //Functions ---------------------------------
     verify: function (letter) {
         var LetterCheck = false
         var letters = /[a-z]/;
@@ -52,7 +51,6 @@ var got = {
                 if (this.chosenWord[i] == letter) {
                     this.underline[i] = letter;
                     document.getElementById("guessWord").innerHTML = this.underline.join(" ");
-                    // console.log("1")
                 }
             }
         }
@@ -65,17 +63,13 @@ var got = {
     },
 
     roundover: function () {
-        // console.log("2")
         document.getElementById("guessesLeft").innerHTML = this.guessesleft;
         document.getElementById("guessWord").innerHTML = this.underline.join(" ");
         document.getElementById("lettersGuessed").innerHTML = this.wrongletter.join(" ");
-        // console.log("2.5");
         if (this.wordletter.toString() === this.underline.toString() && this.chosenWord !== "") {
             this.wins++;
-            // console.log("3")
             alert("You win!  The answer was " + this.chosenWord)
             document.getElementById("wins").innerHTML = this.wins;
-            // console.log("4")
             got.startup();
         }
         else if (this.guessesleft === 0) {
@@ -86,8 +80,6 @@ var got = {
         }
     }
 }
-//-----------------start--------------
-
 
 document.getElementById("guessWord").textContent = "Press any key to get started"
 
@@ -98,6 +90,4 @@ document.onkeyup = function () {
         got.verify(letter);
         got.roundover();
     }
-
-
 }
